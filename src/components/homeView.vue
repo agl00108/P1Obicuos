@@ -7,19 +7,19 @@
         <div class="star">⭐ #2</div>
         <p>{{ athletes[1].name }}</p>
         <p>{{ athletes[1].steps }} PASOS</p>
-        <a href="#">Consultar INFO</a>
+        <button class="info-button">Más Info</button>
       </div>
       <div class="rank rank-1">
         <div class="star">⭐ #1</div>
         <p>{{ athletes[0].name }}</p>
         <p>{{ athletes[0].steps }} PASOS</p>
-        <a href="#">Consultar INFO</a>
+        <button class="info-button">Más Info</button>
       </div>
       <div class="rank rank-3">
         <div class="star">⭐ #3</div>
         <p>{{ athletes[2].name }}</p>
         <p>{{ athletes[2].steps }} PASOS</p>
-        <a href="#">Consultar INFO</a>
+        <button class="info-button">Más Info</button>
       </div>
     </div>
   </div>
@@ -36,32 +36,37 @@ const athletes = ref([
 </script>
 
 <style scoped>
-.ranking-container {
+.ranking-container
+{
   text-align: center;
   background-color: #b0d9f5;
   padding: 20px;
 }
 
-.title {
-  font-size: 2rem;
+.title
+{
+  font-size: 4rem;
   font-weight: bold;
   color: #233d65;
 }
 
-.subtitle {
+.subtitle
+{
   font-size: 1.2rem;
   color: #233d65;
   margin-bottom: 20px;
 }
 
-.podium {
+.podium
+{
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 20px;
 }
 
-.rank {
+.rank
+{
   width: 150px;
   background-color: #34495e;
   color: white;
@@ -69,16 +74,36 @@ const athletes = ref([
   border-radius: 5px;
 }
 
-.rank-1 {
+.rank-1
+{
   height: 200px;
 }
 
-.rank-2, .rank-3 {
+.rank-2, .rank-3
+{
   height: 150px;
 }
 
-.star {
+.star
+{
   font-size: 1.5rem;
   margin-bottom: 10px;
+}
+
+.info-button
+{
+  background-color: #b0d9f5;
+  color: #34495e;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.info-button:hover
+{
+  background-color: #b0d9f5;
 }
 </style>
