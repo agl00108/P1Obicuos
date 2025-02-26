@@ -2,7 +2,7 @@
   <div class="ranking-container">
     <h1 class="title">RANKING</h1>
     <h2 class="subtitle">RESULTADOS DE LOS MEJORES ATLETAS</h2>
-    <div class="podium">
+    <div v-if="athletes.length > 0" class="podium">
       <div class="rank rank-2">
         <div class="star">⭐ #2</div>
         <p>{{ athletes[1].name }}</p>
@@ -22,53 +22,63 @@
         <button class="info-button">Más Info</button>
       </div>
     </div>
+    <div v-else>
+      <p>Cargando datos...</p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
-const athletes = ref([
-      { rank: 1, name: 'Jugador 1', steps: 14567, latitud: 37.7749, longitud: -122.4194, porcentajeBateria: 50},
-      { rank: 2, name: 'Jugador 2', steps: 14320, latitud: 37.7749, longitud: -122.4194, porcentajeBateria: 40},
-      { rank: 3, name: 'Jugador 3', steps: 14000, latitud: 37.7749, longitud: -122.4194, porcentajeBateria: 90}
-    ]
-);
+const athletes = ref([]);
+
+onMounted(async () => {
+  try {
+    const response = await fetch('http://51.68.136.57:3000/app/data');
+    const data = await response.json();
+
+    athletes.value = data.map((athlete, index) => ({
+      rank: index + 1,
+      name: athlete.name,
+      steps: athlete.steps,
+      latitud: athlete.latitud,
+      longitud: athlete.longitud,
+      porcentajeBateria: athlete.porcentajeBateria
+    }));
+  } catch (error) {
+    console.error("Error al obtener los datos: ", error);
+  }
+});
 </script>
 
-
 <style scoped>
-.ranking-container
-{
+.ranking-container {
   text-align: center;
   background-color: #b0d9f5;
   padding: 20px;
 }
 
-.title
-{
+.title {
   font-size: 4rem;
   font-weight: bold;
   color: #233d65;
 }
 
-.subtitle
-{
+.subtitle {
   font-size: 1.2rem;
   color: #233d65;
   margin-bottom: 20px;
 }
 
-.podium
-{
+.podium {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 20px;
 }
 
-.rank
-{
+.rank {
   width: 150px;
   background-color: #34495e;
   color: white;
@@ -76,24 +86,20 @@ const athletes = ref([
   border-radius: 5px;
 }
 
-.rank-1
-{
+.rank-1 {
   height: 200px;
 }
 
-.rank-2, .rank-3
-{
+.rank-2, .rank-3 {
   height: 150px;
 }
 
-.star
-{
+.star {
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
-.info-button
-{
+.info-button {
   background-color: #b0d9f5;
   color: #34495e;
   border: none;
@@ -104,8 +110,7 @@ const athletes = ref([
   transition: background-color 0.3s;
 }
 
-.info-button:hover
-{
+.info-button:hover {
   background-color: #b0d9f5;
 }
 </style>
