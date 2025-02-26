@@ -29,11 +29,13 @@
 import { ref } from 'vue';
 
 const athletes = ref([
-  { rank: 1, name: 'Jugador 1', steps: 14567 },
-  { rank: 2, name: 'Jugador 2', steps: 14320 },
-  { rank: 3, name: 'Jugador 3', steps: 14000 }
-]);
+      { rank: 1, name: 'Jugador 1', steps: 14567, latitud: 37.7749, longitud: -122.4194, porcentajeBateria: 50},
+      { rank: 2, name: 'Jugador 2', steps: 14320, latitud: 37.7749, longitud: -122.4194, porcentajeBateria: 40},
+      { rank: 3, name: 'Jugador 3', steps: 14000, latitud: 37.7749, longitud: -122.4194, porcentajeBateria: 90}
+    ]
+);
 </script>
+
 
 <style scoped>
 .ranking-container
@@ -95,7 +97,7 @@ const athletes = ref([
   background-color: #b0d9f5;
   color: #34495e;
   border: none;
-  padding: 10px 20px;
+  padding: 9px 20px;
   font-size: 1rem;
   border-radius: 5px;
   cursor: pointer;

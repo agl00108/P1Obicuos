@@ -1,13 +1,16 @@
 <template>
   <HomeView />
+  <InfoPlural/>
 </template>
 
 <script>
 import HomeView from "@/components/homeView.vue";
+import InfoPlural from "@/components/InfoPlural.vue";
 
 export default {
   name: 'App',
   components: {
+    InfoPlural,
     HomeView
   }
 }
