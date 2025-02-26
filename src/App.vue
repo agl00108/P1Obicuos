@@ -5,12 +5,12 @@
 
 <script>
 import HomeView from "@/components/homeView.vue";
-import InfoPlural from "@/components/InfoPlural.vue";
+import MapaComponent from "@/components/mapaComponent.vue";
 
 export default {
   name: 'App',
   components: {
-    InfoPlural,
+    InfoPlural: MapaComponent,
     HomeView
   }
 }

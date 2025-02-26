@@ -17,12 +17,11 @@ const athletes = ref([
 ]);
 
 onMounted(() => {
-  // Centrar el mapa en Jaén sin permitir zoom
+
   const map = L.map('map', {
     center: [37.7796, -3.7845],
     zoom: 13,
     scrollWheelZoom: false,
-    zoomControl: false
   });
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
